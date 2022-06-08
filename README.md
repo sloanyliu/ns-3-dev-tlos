@@ -13,7 +13,9 @@ List of To-Do's:
 Usage Exmaple: scratch/myterrainlos.cc
 
 $ ./ns3 configure 
+
 $ ./ns3 build
+
 $ ./ns3 run scratch/myterrainlos
 
 # The Network Simulator, Version 3
