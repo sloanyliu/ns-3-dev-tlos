@@ -84,7 +84,6 @@ TerrainLOS::GetChannelCondition (Ptr<const MobilityModel> a, Ptr<const MobilityM
 bool 
 TerrainLOS::GetChannelCondition (int srcRow, int srcCol, int dstRow, int dstCol)
 {
-  processAllEdges(srcRow, srcCol);
   processAllSlices(srcRow, srcCol);
   if ((vizViews[dstRow])[dstCol] == 1) 
   {
@@ -642,6 +641,7 @@ TerrainLOS::bootStrap(std::vector<std::vector<float>> dem)
   for (int i = 0; i < MaxRow; i++) 
   {
     AuxGrid.push_back(dem[i]);
+    DEM.push_back(dem[i]);
   }
 
   for (int i = 0; i < MaxRow; i++) 
@@ -676,22 +676,22 @@ TerrainLOS::bootStrap(std::vector<std::vector<float>> dem)
 }
 
 void 
-TerrainLOS::refreshAllGrids(std::vector<std::vector<float>> dem)
+TerrainLOS::refreshAllGrids(void)
 {
-  refreshAG(dem);
-  refreshVS();
+  refreshAG();
+  //refreshVS();
   refreshVV();
   refreshTG();
 }
 
 void 
-TerrainLOS::refreshAG(std::vector<std::vector<float>> dem)
+TerrainLOS::refreshAG()
 {
   for (int i = 0; i < static_cast<int>(AuxGrid.size()); i++) 
   {
     for (int j = 0; j < static_cast<int>(AuxGrid[i].size()); j++) 
     {
-      (AuxGrid[i])[j] = (dem[i])[j];
+      (AuxGrid[i])[j] = (DEM[i])[j];
     }
   }
 }
@@ -736,6 +736,7 @@ TerrainLOS::refreshTG(void)
 void 
 TerrainLOS::printAuxGrid(void)
 {
+  std::cout << "AuxGrid:" << std::endl;
   for (int i = 0; i < MaxRow; i++) 
   {
     for (int j = 0; j < static_cast<int>(AuxGrid[i].size()); j++) 
@@ -749,6 +750,7 @@ TerrainLOS::printAuxGrid(void)
 void 
 TerrainLOS::printVizViews(void)
 {
+  std::cout << "Views:" << std::endl;
   for (int i = 0; i < MaxRow; i++) 
   {
     for (int j = 0; j < static_cast<int>(vizViews[i].size()); j++) 
@@ -762,6 +764,7 @@ TerrainLOS::printVizViews(void)
 void 
 TerrainLOS::printVizScore(void)
 {
+  std::cout << "Score:" << std::endl;
   for (int i = 0; i < MaxRow; i++) 
   {
     for (int j = 0; j < static_cast<int>(vizScore[i].size()); j++) 
@@ -775,6 +778,7 @@ TerrainLOS::printVizScore(void)
 void 
 TerrainLOS::printTrackerGrid(void)
 {
+  std::cout << "Tracker:" << std::endl;
   for (int i = 0; i < MaxRow; i++) 
   {
     for (int j = 0; j < static_cast<int>(TrackerGrid[i].size()); j++) 

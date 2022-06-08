@@ -104,9 +104,10 @@ class TerrainLOS: public ChannelConditionModel
 
     
     void bootStrap(std::vector<std::vector<float>> dem);
-    void refreshAllGrids(std::vector<std::vector<float>> dem);
+    //void refreshAllGrids(std::vector<std::vector<float>> dem);
+    void refreshAllGrids(void);
     
-    void refreshAG(std::vector<std::vector<float>> dem);
+    void refreshAG(void);
     void refreshVS(void);
     void refreshVV(void);
     void refreshTG(void);
@@ -191,6 +192,7 @@ class TerrainLOS: public ChannelConditionModel
     int MaxRow;
     int MaxCol;
  
+    std::vector<std::vector<float>> DEM;
     std::vector<std::vector<float>> AuxGrid;
     std::vector<std::vector<int>> vizScore;
     std::vector<std::vector<int>> vizViews;
