@@ -10,6 +10,11 @@ List of To-Do's:
 3) Use TerrainLOS along with other routing protocols within a ns-3 simulation.
 4) Complete 1) and 2) then request TerrainLOS be added to the ns-3 distribution.
 
+Usage Exmaple: scratch/myterrainlos.cc
+
+$ ./ns3 configure 
+$ ./ns3 build
+$ ./ns3 run scratch/myterrainlos
 
 # The Network Simulator, Version 3
 
