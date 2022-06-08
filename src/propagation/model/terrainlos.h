@@ -79,6 +79,8 @@ class TerrainLOS: public ChannelConditionModel
      */
     // It was virtual in ChannelConditionModel
     virtual Ptr<ChannelCondition> GetChannelCondition (Ptr<const MobilityModel> a, Ptr<const MobilityModel> b) const override;
+    
+    bool GetChannelCondition (int srcRow, int srcCol, int dstRow, int dstCol);
 
     /**
     * \brief Copy constructor

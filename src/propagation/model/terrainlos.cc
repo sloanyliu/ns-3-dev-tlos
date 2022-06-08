@@ -81,6 +81,21 @@ TerrainLOS::GetChannelCondition (Ptr<const MobilityModel> a, Ptr<const MobilityM
   return cond;
 }
 
+bool 
+TerrainLOS::GetChannelCondition (int srcRow, int srcCol, int dstRow, int dstCol)
+{
+  processAllEdges(srcRow, srcCol);
+  processAllSlices(srcRow, srcCol);
+  if ((vizViews[dstRow])[dstCol] == 1) 
+  {
+    return true;
+  }
+  else 
+  {
+    return false;
+  }
+}
+
 
 
 Ptr<ChannelCondition>
