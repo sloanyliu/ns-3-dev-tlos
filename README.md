@@ -4,20 +4,24 @@ directory. The main algorithm for determining the viewshed of a point is
 implemented, and is fully functional through the GetChannelCondition() function
 within the new TerrainLOS class. 
 
-Source code:
+## Source code:
 
 src/propagation/model/terrainlos.cc
 
 src/propagation/model/terrainlos.h
 
 
-List of To-Do's:
+## List of To-Do's:
 1) Create a Look-up Table of view grids that is generated along with the bootStrap().
 2) Create dedicated functions to read in and convert DEM files into usable data.
 3) Use TerrainLOS along with other routing protocols within a ns-3 simulation.
 4) Complete 1) and 2) then request TerrainLOS be added to the ns-3 distribution.
 
-Usage Exmaple: scratch/myterrainlos.cc
+## Usage Exmaple: 
+
+scratch/myterrainlos.cc
+
+## Running Example
 
 $ ./ns3 configure 
 
